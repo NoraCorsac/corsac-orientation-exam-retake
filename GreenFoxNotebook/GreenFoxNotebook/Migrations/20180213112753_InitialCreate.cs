@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace GreenFoxNotebook.Migrations
 {
-    public partial class InitialCatalog : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,16 +13,17 @@ namespace GreenFoxNotebook.Migrations
                 name: "Tickets",
                 columns: table => new
                 {
-                    Serialnumber = table.Column<long>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: true),
                     Manufacturer = table.Column<string>(nullable: true),
                     ReportedAt = table.Column<string>(nullable: true),
-                    Reporter = table.Column<int>(nullable: false)
+                    Reporter = table.Column<string>(nullable: true),
+                    Serialnumber = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tickets", x => x.Serialnumber);
+                    table.PrimaryKey("PK_Tickets", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(

@@ -11,8 +11,8 @@ using System;
 namespace GreenFoxNotebook.Migrations
 {
     [DbContext(typeof(NotebookContext))]
-    [Migration("20180213091200_UpdateType")]
-    partial class UpdateType
+    [Migration("20180213112753_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace GreenFoxNotebook.Migrations
 
             modelBuilder.Entity("GreenFoxNotebook.Models.Ticket", b =>
                 {
-                    b.Property<long?>("Serialnumber")
+                    b.Property<long?>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
@@ -32,9 +32,11 @@ namespace GreenFoxNotebook.Migrations
 
                     b.Property<string>("ReportedAt");
 
-                    b.Property<int>("Reporter");
+                    b.Property<string>("Reporter");
 
-                    b.HasKey("Serialnumber");
+                    b.Property<long>("Serialnumber");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Tickets");
                 });
