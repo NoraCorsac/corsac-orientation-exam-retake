@@ -3,47 +3,52 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
+using GreenFoxNotebook.Repositories;
 
 namespace GreenFoxNotebook.Controllers
 {
     [Route("")]
     public class HomeController : Controller
     {
+        public ErrorReportRepository errorRepository;
+
+        public HomeController(ErrorReportRepository errorRepository)
+        {
+            this.errorRepository = errorRepository;
+        }
+
         [HttpGet("")]
         public IActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
         [HttpGet("list")]
         public IActionResult List()
         {
-            return View();
-        }
-
-        [HttpGet("report")]
-        public IActionResult Report()
-        {
-            return View();
+            errorRepository.List();
+            return View("List");
         }
 
         [HttpPost("report")]
-        public IActionResult ReportPost()
+        public IActionResult Report()
         {
-            return View();
+            errorRepository.Report();
+            return RedirectToAction("Index");
         }
 
-        [HttpGet("complete/{id}")]
-        public IActionResult Complete()
+        [HttpPost("complete/{id}")]
+        public IActionResult Complete([FromRoute] int id)
         {
-            return View();
+            errorRepository.Complete(id);
+            return RedirectToAction("Index");
         }
 
         [HttpGet("list/query")]
-        public IActionResult QueryList()
+        public IActionResult QueryList([FromBody] string query)
         {
-            return View();
+            errorRepository.ListQuery(query);
+            return RedirectToAction("Index");
         }
     }
 }

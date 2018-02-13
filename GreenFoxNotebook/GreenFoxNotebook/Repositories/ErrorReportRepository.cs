@@ -7,19 +7,20 @@ namespace GreenFoxNotebook.Repositories
 {
     public class ErrorReportRepository
     {
-        internal void List()
+        public void List()
         {
-            throw new NotImplementedException();
         }
 
-        internal void Report()
+        public void Report()
         {
-            throw new NotImplementedException();
         }
 
-        internal void Complete(object id)
+        public void Complete(int id)
         {
-            throw new NotImplementedException();
+        }
+
+        public void ListQuery(string query)
+        {
         }
     }
 }

@@ -1,0 +1,36 @@
+﻿@model GreenFoxNotebook.Models.Ticket
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <title>Error reporter</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <form action="/list" method="get">
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <th>Reporter</th>
+                <th>Manufacturer</th>
+                <th>Serial Number</th>
+                <th>Description</th>
+                <th>Date</th>
+            </tr>
+
+            @{foreach (var item in @Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Reporter</td>
+                        <td>@item.Manufacturer</td>
+                        <td>@item.SerialNumber</td>
+                        <td>@item.Description</td>
+                        <td>@item.Date</td>
+                    </tr>
+
+                }
+              }
+        </table>
+</body>
+</html>
