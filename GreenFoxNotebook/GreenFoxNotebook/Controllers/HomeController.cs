@@ -47,7 +47,7 @@ namespace GreenFoxNotebook.Controllers
         [HttpGet("list/query")]
         public IActionResult QueryList([FromBody] string query)
         {
-            errorRepository.ListQuery(query);
+            errorRepository.FilterList(query);
             return RedirectToAction("Index");
         }
     }
