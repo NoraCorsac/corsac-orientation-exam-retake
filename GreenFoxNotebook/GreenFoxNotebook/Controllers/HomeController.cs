@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GreenFoxNotebook.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using GreenFoxNotebook.Repositories;
 
 namespace GreenFoxNotebook.Controllers
 {
