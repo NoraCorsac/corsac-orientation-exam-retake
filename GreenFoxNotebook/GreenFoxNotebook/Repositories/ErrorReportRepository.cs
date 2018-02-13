@@ -28,9 +28,9 @@ namespace GreenFoxNotebook.Repositories
         {
         }
 
-        public List<Ticket> FilterList(string query)
+        public List<Ticket> FilterList(string q)
         {
-            return notebookContext.Tickets.Where(t => t.Manufacturer.Equals(query)).ToList();
+            return notebookContext.Tickets.Where(t => t.Manufacturer.Equals(q)).ToList();
         }
     }
 }

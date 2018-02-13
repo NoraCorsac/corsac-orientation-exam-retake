@@ -1,8 +1,26 @@
 A unit teszt egyszerre csak egy komponensét teszteli az appnak, hogy azt csinálja-e, amit elvárunk tõle, úgy csinálja-e stb a különbözõ inputokra.
 Unit test pl, hogy meghúztunk-e minden csavart az autónkban.
-Pl ezzel tudjuk vizsgálni, hogy az adott method azt return-t adja-e vissza, amit várunk tõle.
+Pl ezzel tudjuk vizsgálni, hogy az adott method azt a return-t adja-e vissza, amit várunk tõle.
+Pl:
+[Test]
+        public void TestMethod1()
+        {
+            string trialtest1 = "a";
+            var count = new Count();
+            var expectedDictionary = new Dictionary<char, int>();
+            expectedDictionary.Add('a', 1);
+
+            Assert.AreEqual(expectedDictionary, Count.LetterCounter(trialtest1));
+        }
 
 Integration test több methodot tesztel egyszerre, ezek kapcsolatát, hogyan mûködnek együtt.
 Elõzõ példa alapján az integration test pl egy satufék, ami az egész autót teszteli egyben.
 Ennek célja az egymásra épülõ komponensek mûködésének a vizsgálata.
 Pl így tudjuk vizsgálni, hogy agy request megérkezik-e, hogy az adatbázisban ez azt csinálja-e, amit elvárunk tõle.
+Pl:
+[Fact]
+public async Task FiatShouldReturnOkStatus()
+{
+  var response = await Client.GetAsync("/api/search/fiat");
+  Assert.Equal(HttpStatusCode.Ok, response.StatusCode);
+}
